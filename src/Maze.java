@@ -22,6 +22,6 @@ public class Maze
 
     public ArrayList<Square> getNeighbors(Square sq)
     {
-
+        
     }
 }
