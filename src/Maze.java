@@ -3,6 +3,8 @@ public class Maze
 {
     private Square [][] maze;
     private Scanner file;
+    private String name;
+
     public Maze()
     {
 
@@ -10,6 +12,7 @@ public class Maze
 
     public boolean loadMaze(String fname)
     {   
+        name = fname;
         file = new Scanner(fname);
         int numRows = file.readNext();
         int numCols = file.readNext();
@@ -59,5 +62,25 @@ public class Maze
                     return square;
             }
         }
+    }
+
+    public void reset()
+    {
+        maze = null;
+        this.loadMaze(name);
+    }
+
+    public String toString()
+    {
+        String mazeToString;
+        for(Square [] row: maze)
+        {
+            for(Square col: maze)
+            {
+                mazeToString.add(col.toString());
+            }
+            mazeToString.add("\n");
+        }
+        return mazeToString;
     }
 }
