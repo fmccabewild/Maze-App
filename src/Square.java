@@ -3,11 +3,14 @@ public class Square
     private int row;
     private int col;
     private int type;
+    public Square previous;
+
     public Square(int row, int col, int type)
     {
         this.row = row;
         this.col = col;
         this.type = type;
+        this.previous = null;
     }
 
     public int getRow()
