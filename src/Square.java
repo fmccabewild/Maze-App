@@ -2,7 +2,7 @@ public class Square
 {
     private int row;
     private int col;
-    private int type;
+    public int type;
     public Square previous;
 
     public Square(int row, int col, int type)
@@ -30,7 +30,7 @@ public class Square
 
     public String toString()
     {
-        String str;
+        String str = "";
         switch(type)
         {
             case 0:
@@ -40,7 +40,7 @@ public class Square
                 str += "#";
                 break;
             case 2:
-                str += "S"
+                str += "S";
                 break;
             case 3:
                 str += "E";

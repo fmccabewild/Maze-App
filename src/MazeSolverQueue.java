@@ -1,6 +1,6 @@
-public class MazeSolverQueue implements MazeSolver
+public class MazeSolverQueue extends MazeSolver
 {
-    private MyQueue queue;
+    private MyQueue<Square> queue = new MyQueue<Square>();
     public MazeSolverQueue(Maze maze)
     {
         super(maze);
@@ -9,7 +9,7 @@ public class MazeSolverQueue implements MazeSolver
     @Override
     public void makeEmpty()
     {
-        queue = new MyStack();
+        queue = new MyQueue();
     }
 
     @Override
@@ -21,12 +21,12 @@ public class MazeSolverQueue implements MazeSolver
     @Override
     public void add(Square sq)
     {
-        queue.add(sq);
+        queue.enqueue(sq);
     }
 
     @Override
     public Square next()
     {
-        return queue.remove();
+        return queue.dequeue();
     }
 }

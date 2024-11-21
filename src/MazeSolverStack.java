@@ -1,4 +1,4 @@
-public class MazeSolverStack implements MazeSolver
+public class MazeSolverStack extends MazeSolver
 {
     private MyStack stack;
     public MazeSolverStack(Maze maze)

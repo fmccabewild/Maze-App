@@ -1,36 +1,36 @@
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class MyQueue implements QueueADT
+public class MyQueue<T> implements QueueADT<T>
 {
-    private ArrayList<Object> queue;
+    private ArrayList<T> queue;
 
     public MyQueue()
     {
         queue = new ArrayList<>();
     }
 
-    public void enqueue(Object item)
+    public void enqueue(T item)
     {
         queue.add(item);
     }
 
-    public Object dequeue()
+    public T dequeue()
     {
         if(queue.isEmpty())
-            throw new NoSuchElementException;
+            throw new NoSuchElementException();
         else
         {
-            Object item = queue.get(0);
+            T item = queue.get(0);
             queue.remove(0);
             return item;
         }
     }
 
-    public Object front()
+    public T front()
     {
         if(queue.isEmpty())
-            throw new NoSuchElementException;
+            throw new NoSuchElementException();
         else
         {
             return queue.get(0);

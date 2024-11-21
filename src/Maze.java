@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 public class Maze
 {
     private Square [][] maze;
@@ -12,26 +13,31 @@ public class Maze
 
     public boolean loadMaze(String fname)
     {   
+        boolean loaded = true;
         name = fname;
         file = new Scanner(fname);
-        int numRows = file.readNext();
-        int numCols = file.readNext();
+        int numRows = file.nextInt();
+        int numCols = file.nextInt();
         
         this.maze = new Square[numRows][numCols];
         for (int row = 0; row < numRows; row++)
         {
             for (int col = 0; col < numCols; col++)
-                maze[row][col] = file.readNext();
+            {
+                Square sq = maze[row][col];
+                sq.type = file.nextInt();
+            }
         }
+        return loaded;
     }
 
     public ArrayList<Square> getNeighbors(Square sq)
     {
         ArrayList<Square> neighbors = new ArrayList<>();
-        neighbors.add(maze[sq.getRow - 1][sq.getCol]);
-        neighbors.add(maze[sq.getRow + 1][sq.getCol]);
-        neighbors.add(maze[sq.getRow][sq.getCol - 1]);
-        neighbors.add(maze[sq.getRow][sq.getCol + 1]);
+        neighbors.add(maze[sq.getRow() - 1][sq.getCol()]);
+        neighbors.add(maze[sq.getRow() + 1][sq.getCol()]);
+        neighbors.add(maze[sq.getRow()][sq.getCol() - 1]);
+        neighbors.add(maze[sq.getRow()][sq.getCol() + 1]);
         for(Square neighbor: neighbors)
         {
             if(neighbor == null)
@@ -50,6 +56,7 @@ public class Maze
                     return square;
             }
         }
+        return null;
     }
 
     public Square getFinish()
@@ -62,6 +69,7 @@ public class Maze
                     return square;
             }
         }
+        return null;
     }
 
     public void reset()
@@ -72,14 +80,14 @@ public class Maze
 
     public String toString()
     {
-        String mazeToString;
+        String mazeToString = "";
         for(Square [] row: maze)
         {
-            for(Square col: maze)
+            for(Square col: row)
             {
-                mazeToString.add(col.toString());
+                mazeToString += (col.toString());
             }
-            mazeToString.add("\n");
+            mazeToString += ("\n");
         }
         return mazeToString;
     }

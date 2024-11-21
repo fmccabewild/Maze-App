@@ -1,4 +1,4 @@
-import java.util.ArrayLists;
+import java.util.ArrayList;
 
 abstract class MazeSolver
 {
@@ -23,7 +23,7 @@ abstract class MazeSolver
     {
         if(isSolved)
         {
-            String string;
+            String string = "";
             ArrayList<Square> path = new ArrayList<>();
             Square sq = maze.getFinish();
             while(sq != null)
@@ -31,14 +31,14 @@ abstract class MazeSolver
                 path.add(0, sq);
                 sq = sq.previous;
             }
-            for(Square sq: path)
+            for(Square sq2: path)
             {
-                string.add("[" + sq.getRow() + ", " + sq.getCol() + "] ")
+                string += ("[" + sq2.getRow() + ", " + sq2.getCol() + "] ");
             }
             return string;
         }
         else
-            return "No solution."
+            return "No solution.";
     }
 
     public Square step()
@@ -50,7 +50,7 @@ abstract class MazeSolver
             Square nextSquare = next();
             if(nextSquare.getType() == 3)
                 return nextSquare;
-            Square [] neighbors = maze.getNeighbors(nextSquare);
+            ArrayList<Square> neighbors = maze.getNeighbors(nextSquare);
             for(Square sq: neighbors)
             {
                 if(sq.previous == null && sq != maze.getStart())
@@ -64,11 +64,11 @@ abstract class MazeSolver
     public void solve()
     {
         add(maze.getStart());
-        while(!(isEmpty))
+        while(!(isEmpty()))
         {
             Square sq = next();
             if(sq == maze.getFinish())
-                isSolved == true;
+                isSolved = true;
                 break;
         }
     }
