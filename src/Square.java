@@ -2,7 +2,7 @@ public class Square
 {
     private int row;
     private int col;
-    public int type;
+    private int type;
     public Square previous;
 
     public Square(int row, int col, int type)

@@ -1,6 +1,6 @@
 public class MazeSolverStack extends MazeSolver
 {
-    private MyStack stack;
+    private MyStack<Square> stack;
     public MazeSolverStack(Maze maze)
     {
         super(maze);

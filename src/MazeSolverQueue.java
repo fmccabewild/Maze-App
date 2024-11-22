@@ -1,6 +1,6 @@
 public class MazeSolverQueue extends MazeSolver
 {
-    private MyQueue<Square> queue = new MyQueue<Square>();
+    private MyQueue<Square> queue;
     public MazeSolverQueue(Maze maze)
     {
         super(maze);

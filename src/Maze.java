@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.File;
 public class Maze
 {
     private Square [][] maze;
@@ -15,17 +16,25 @@ public class Maze
     {   
         boolean loaded = true;
         name = fname;
-        file = new Scanner(fname);
-        int numRows = file.nextInt();
-        int numCols = file.nextInt();
+        File f = new File(fname);
+        try 
+            {
+                file = new Scanner(f);
+            }
+        catch(Exception FileNotFoundException)
+            {
+                loaded = false;
+            }
+        int numRows = Integer.parseInt(file.next());
+        int numCols = Integer.parseInt(file.next());
         
         this.maze = new Square[numRows][numCols];
         for (int row = 0; row < numRows; row++)
         {
             for (int col = 0; col < numCols; col++)
             {
-                Square sq = maze[row][col];
-                sq.type = file.nextInt();
+                Square sq = new Square(row, col, Integer.parseInt(file.next()));
+                maze[row][col] = sq;
             }
         }
         return loaded;
@@ -74,7 +83,6 @@ public class Maze
 
     public void reset()
     {
-        maze = null;
         this.loadMaze(name);
     }
 
