@@ -43,15 +43,10 @@ public class Maze
     public ArrayList<Square> getNeighbors(Square sq)
     {
         ArrayList<Square> neighbors = new ArrayList<>();
-        neighbors.add(maze[sq.getRow() - 1][sq.getCol()]);
-        neighbors.add(maze[sq.getRow() + 1][sq.getCol()]);
-        neighbors.add(maze[sq.getRow()][sq.getCol() - 1]);
-        neighbors.add(maze[sq.getRow()][sq.getCol() + 1]);
-        for(Square neighbor: neighbors)
-        {
-            if(neighbor == null)
-                neighbors.remove(neighbor);
-        }
+        try{neighbors.add(maze[sq.getRow() - 1][sq.getCol()]);}catch(Exception IndexOutOfBoundsException){}
+        try{neighbors.add(maze[sq.getRow() + 1][sq.getCol()]);}catch(Exception IndexOutOfBoundsException){}
+        try{neighbors.add(maze[sq.getRow()][sq.getCol() - 1]);}catch(Exception IndexOutOfBoundsException){}
+        try{neighbors.add(maze[sq.getRow()][sq.getCol() + 1]);}catch(Exception IndexOutOfBoundsException){}
         return neighbors;
     }
 

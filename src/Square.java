@@ -23,6 +23,11 @@ public class Square
         return col;
     }
 
+    public void setType(int newType)
+    {
+        type = newType;
+    }
+
     public int getType()
     {
         return type;
@@ -44,6 +49,12 @@ public class Square
                 break;
             case 3:
                 str += "E";
+                break;
+            case 4:
+                str += "O";
+                break;
+            case 5:
+                str += "X";
                 break;
         }
         return str;

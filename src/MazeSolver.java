@@ -12,6 +12,7 @@ abstract class MazeSolver
     {
         makeEmpty();
         this.maze = maze;
+        add(maze.getStart());
     }
 
     public boolean isSolved()
@@ -53,9 +54,15 @@ abstract class MazeSolver
             ArrayList<Square> neighbors = maze.getNeighbors(nextSquare);
             for(Square sq: neighbors)
             {
-                if(sq.previous == null && sq != maze.getStart())
+                if(sq.previous == null && sq != maze.getStart() && !(sq.getType() == 1))
+                {
                     add(sq);
+                    if(!(sq.getType() == 3))
+                        sq.setType(4);
+                    if(sq.getType() == 3)
+                        isSolved = true;
                     sq.previous = nextSquare;
+                }
             }
             return nextSquare;
         }
@@ -63,7 +70,6 @@ abstract class MazeSolver
 
     public void solve()
     {
-        add(maze.getStart());
         while(!(isEmpty()))
         {
             Square sq = next();
